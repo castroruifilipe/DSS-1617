@@ -37,7 +37,7 @@ CREATE TABLE `administrador` (
 
 LOCK TABLES `administrador` WRITE;
 /*!40000 ALTER TABLE `administrador` DISABLE KEYS */;
-INSERT INTO `administrador` VALUES ('admin',1);
+INSERT INTO `administrador` VALUES ('rui',1);
 /*!40000 ALTER TABLE `administrador` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -75,7 +75,7 @@ CREATE TABLE `conta` (
   `idConta` int(11) NOT NULL AUTO_INCREMENT,
   `saldo` double NOT NULL,
   PRIMARY KEY (`idConta`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -84,7 +84,7 @@ CREATE TABLE `conta` (
 
 LOCK TABLES `conta` WRITE;
 /*!40000 ALTER TABLE `conta` DISABLE KEYS */;
-INSERT INTO `conta` VALUES (1,500),(2,0),(3,10),(4,500);
+INSERT INTO `conta` VALUES (1,0),(2,0),(3,0);
 /*!40000 ALTER TABLE `conta` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -111,7 +111,7 @@ CREATE TABLE `despesa` (
 
 LOCK TABLES `despesa` WRITE;
 /*!40000 ALTER TABLE `despesa` DISABLE KEYS */;
-INSERT INTO `despesa` VALUES ('1','2017-01-24','2017-01-06',46.5,0),('2','2017-02-16','2017-01-06',250,0),('3','2017-01-06','2017-01-06',29.9,0);
+INSERT INTO `despesa` VALUES ('1','2016-12-31','2016-12-29',40,0),('2','2016-12-29','2016-12-29',36.45,0),('3','2016-12-29','2016-12-29',200,0);
 /*!40000 ALTER TABLE `despesa` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -137,7 +137,7 @@ CREATE TABLE `extraordinária` (
 
 LOCK TABLES `extraordinária` WRITE;
 /*!40000 ALTER TABLE `extraordinária` DISABLE KEYS */;
-INSERT INTO `extraordinária` VALUES ('Televisão nova','2');
+INSERT INTO `extraordinária` VALUES ('Televisão nova','3');
 /*!40000 ALTER TABLE `extraordinária` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -167,7 +167,7 @@ CREATE TABLE `inquilino` (
 
 LOCK TABLES `inquilino` WRITE;
 /*!40000 ALTER TABLE `inquilino` DISABLE KEYS */;
-INSERT INTO `inquilino` VALUES ('2017-01-06',NULL,3,'diogo'),('2017-01-06',NULL,4,'esmeralda'),('2017-01-06',NULL,2,'miguel'),('2017-01-06',NULL,1,'rui');
+INSERT INTO `inquilino` VALUES ('2016-12-29',NULL,1,'diogo'),('2016-12-29',NULL,2,'esmeralda'),('2016-12-29',NULL,3,'miguel');
 /*!40000 ALTER TABLE `inquilino` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -196,7 +196,7 @@ CREATE TABLE `inquilinocategoria` (
 
 LOCK TABLES `inquilinocategoria` WRITE;
 /*!40000 ALTER TABLE `inquilinocategoria` DISABLE KEYS */;
-INSERT INTO `inquilinocategoria` VALUES ('diogo','Água',25),('diogo','Eletricidade',25),('diogo','Gás',25),('diogo','Internet',50),('esmeralda','Água',25),('esmeralda','Eletricidade',25),('esmeralda','Gás',25),('miguel','Água',25),('miguel','Eletricidade',25),('miguel','Gás',25),('miguel','Internet',25),('rui','Água',25),('rui','Eletricidade',25),('rui','Gás',25),('rui','Internet',25);
+INSERT INTO `inquilinocategoria` VALUES ('diogo','Água',30),('diogo','Eletricidade',30),('diogo','Gás',30),('diogo','Internet',30),('esmeralda','Água',35),('esmeralda','Eletricidade',35),('esmeralda','Gás',35),('esmeralda','Internet',35),('miguel','Água',35),('miguel','Eletricidade',35),('miguel','Gás',35),('miguel','Internet',35);
 /*!40000 ALTER TABLE `inquilinocategoria` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -226,7 +226,7 @@ CREATE TABLE `inquilinoextraordinária` (
 
 LOCK TABLES `inquilinoextraordinária` WRITE;
 /*!40000 ALTER TABLE `inquilinoextraordinária` DISABLE KEYS */;
-INSERT INTO `inquilinoextraordinária` VALUES ('diogo','2',25,0),('esmeralda','2',25,0),('miguel','2',25,0),('rui','2',25,0);
+INSERT INTO `inquilinoextraordinária` VALUES ('diogo','3',30,0),('esmeralda','3',35,0),('miguel','3',35,0);
 /*!40000 ALTER TABLE `inquilinoextraordinária` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -252,7 +252,7 @@ CREATE TABLE `movimento` (
   CONSTRAINT `fk_Movimento_Conta1` FOREIGN KEY (`conta`) REFERENCES `conta` (`idConta`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Movimento_Despesa1` FOREIGN KEY (`despesa`) REFERENCES `despesa` (`ref`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Movimento_Prestacao1` FOREIGN KEY (`prestacao`) REFERENCES `prestacao` (`idPrestacao`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -261,7 +261,6 @@ CREATE TABLE `movimento` (
 
 LOCK TABLES `movimento` WRITE;
 /*!40000 ALTER TABLE `movimento` DISABLE KEYS */;
-INSERT INTO `movimento` VALUES (1,'Depósito',500,'2017-01-06 15:20:27',1,NULL,NULL),(2,'Depósito',500,'2017-01-06 15:21:05',4,NULL,NULL),(3,'Depósito',10,'2017-01-06 15:21:59',3,NULL,NULL);
 /*!40000 ALTER TABLE `movimento` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -282,7 +281,7 @@ CREATE TABLE `prestacao` (
   PRIMARY KEY (`idPrestacao`),
   KEY `fk_Prestacao_Extraordinária1_idx` (`despesa`),
   CONSTRAINT `fk_Prestacao_Extraordinária1` FOREIGN KEY (`despesa`) REFERENCES `extraordinária` (`despesa`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -291,7 +290,7 @@ CREATE TABLE `prestacao` (
 
 LOCK TABLES `prestacao` WRITE;
 /*!40000 ALTER TABLE `prestacao` DISABLE KEYS */;
-INSERT INTO `prestacao` VALUES (1,31.25,1,0,'2','diogo'),(2,31.25,2,0,'2','diogo'),(3,20.833333333333332,1,0,'2','esmeralda'),(4,20.833333333333332,2,0,'2','esmeralda'),(5,20.833333333333332,3,0,'2','esmeralda'),(6,31.25,1,0,'2','miguel'),(7,31.25,2,0,'2','miguel'),(8,20.833333333333332,1,0,'2','rui'),(9,20.833333333333332,2,0,'2','rui'),(10,20.833333333333332,3,0,'2','rui');
+INSERT INTO `prestacao` VALUES (1,60,1,0,'3','diogo'),(2,70,1,0,'3','esmeralda'),(3,14,1,0,'3','miguel'),(4,14,2,0,'3','miguel'),(5,14,3,0,'3','miguel'),(6,14,4,0,'3','miguel'),(7,14,5,0,'3','miguel');
 /*!40000 ALTER TABLE `prestacao` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -319,7 +318,7 @@ CREATE TABLE `recorrente` (
 
 LOCK TABLES `recorrente` WRITE;
 /*!40000 ALTER TABLE `recorrente` DISABLE KEYS */;
-INSERT INTO `recorrente` VALUES ('1','Eletricidade'),('3','Internet');
+INSERT INTO `recorrente` VALUES ('2','Eletricidade'),('1','Internet');
 /*!40000 ALTER TABLE `recorrente` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -344,7 +343,7 @@ CREATE TABLE `utilizador` (
 
 LOCK TABLES `utilizador` WRITE;
 /*!40000 ALTER TABLE `utilizador` DISABLE KEYS */;
-INSERT INTO `utilizador` VALUES ('admin','Administrador','admin'),('diogo','Diogo','diogo'),('esmeralda','Esmeralda','esmeralda'),('miguel','Miguel','miguel'),('rui','Rui','rui');
+INSERT INTO `utilizador` VALUES ('diogo','Diogo','diogo'),('esmeralda','Esmeralda','esmeralda'),('miguel','Miguel','miguel'),('rui','Rui Leite','rui');
 /*!40000 ALTER TABLE `utilizador` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -357,4 +356,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2017-01-06 15:23:11
+-- Dump completed on 2016-12-29 22:53:44
