@@ -1,2 +1,2 @@
 # DSS-1516
-Trabalho prático da UC Desenvolvimento de Sistemas de Software (MiEI)
+Trabalho prático realizado no âmbito da UC Desenvolvimento de Sistemas de Software do Mestrado Integrado em Engenharia Informática
